@@ -1,0 +1,9 @@
+{
+  "name": "lodash",
+  "version": "0.0.3",
+  "description": "a utility library",
+  "author": "Jo Shinonome",
+  "git": "https://github.com/jshinonome/lodash",
+  "type": "q",
+  "dependencies": {}
+}
