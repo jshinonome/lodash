@@ -26,7 +26,7 @@
   start _ end#list
  };
 
-.lo.xor:{[setA;setB]
+.lo.Xor:{[setA;setB]
   :distinct (setA except setB), setB except setA
  };
 
