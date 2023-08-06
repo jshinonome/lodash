@@ -71,5 +71,10 @@
 / only type(104h), value(0) can be applied project null
 .lo.projectionNull:-9!0x010000000a00000065ff;
 
-/ not possible?
 .lo.isProjectionNull:{104h=type ~[(::)]x};
+
+.lo.MagicFlattenApply:{[list;function]
+  / need to define a global function to reduce time and memory usage
+  .lo.tmpFn:function;
+  {[x;y;z]z;x,:.lo.tmpFn y;x}/[();list;(::)]
+ };
