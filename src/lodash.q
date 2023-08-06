@@ -34,19 +34,42 @@
   (!) . flip pairs
  };
 
-.lo.Map:{[list;function]
-  @[function;list;{:y each z}[;function;list]]
- };
-
 .lo.Filter:{[list;function]
   / if array operation fails, use each operation
-  :list where .lo.Map[list;function]
- };
-
-.lo.FlatMap:{[list;function]
-  :(,/) .lo.Map[list;function]
+  :list where function list
  };
 
 .lo.Shuffle:{[list]
   (neg count list)?list
  };
+
+.lo.ApplyToColumns:{[table;function]
+  params:.lo.getParams function;
+  if[not all params in cols table;'"function parameters are not matched with column names"];
+  ?[table;();();(enlist(';function)),params]
+ };
+
+.lo.getParamsFromProjection:{[projection]
+  l:value projection;
+  function:first l;
+  params:(value function)1;
+  args:1_l;
+  i:where not (101h=type each args)&104=type each (~)[(::)]each args;
+  :params @ (til count params) except i;
+ };
+
+.lo.getParams:{[function]
+  kType:type function;
+  $[100h=kType;
+      (value function)1;
+    104h=kType;
+      .lo.getParamsFromProjection function;
+      '"not support type ", string kType
+  ]
+ };
+
+/ only type(104h), value(0) can be applied project null
+.lo.projectionNull:-9!0x010000000a00000065ff;
+
+/ not possible?
+.lo.isProjectionNull:{104h=type ~[(::)]x};
