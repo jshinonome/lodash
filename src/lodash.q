@@ -54,7 +54,7 @@
   function:first l;
   params:(value function)1;
   args:1_l;
-  i:where not (101h=type each args)&104=type each (~)[(::)]each args;
+  i:where not 104=type each (~)[(::)]each args;
   :params @ (til count params) except i;
  };
 
