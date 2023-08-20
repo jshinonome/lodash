@@ -1,4 +1,5 @@
-import {"../src/lodash.q"}
+import {"../src/lodash.q"};
+import {"../src/lodash.k"};
 
 .kest.Test["chunk list";{
   .kest.Match[(0 1 2 3;4 5 6 7;enlist 8);.lo.Chunk[til 9;4]]
@@ -24,4 +25,10 @@ import {"../src/lodash.q"}
   t:([]startDate:2023.08.06 2023.08.07);
   f:{[startDate;endDate] startDate + til 1+endDate-startDate};
   .kest.Match[(2023.08.06 2023.08.07 2023.08.08;2023.08.07 2023.08.08);.lo.ApplyToColumns[t;f[;2023.08.08]]]
+ }];
+
+.kest.Test["ij non-keyed table";{
+  l:([]startDate:4#2023.08.06 2023.08.07 2023.08.08);
+  r:([]startDate:2023.08.06 2023.08.07);
+  .kest.MatchTable[([]startDate:2023.08.06 2023.08.07 2023.08.06);.lo.Ij0[l;r]]
  }];

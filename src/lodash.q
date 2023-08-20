@@ -69,9 +69,9 @@
  };
 
 / only type(104h), value(0) can be applied project null
-.lo.projectionNull:-9!0x010000000a00000065ff;
+.lo.ProjectionNull:-9!0x010000000a00000065ff;
 
-.lo.isProjectionNull:{104h=type ~[(::)]x};
+.lo.IsProjectionNull:{104h=type ~[(::)]x};
 
 .lo.MagicFlattenApply:{[list;function]
   / need to define a global function to reduce time and memory usage
